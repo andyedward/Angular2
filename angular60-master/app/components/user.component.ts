@@ -14,6 +14,8 @@ export class UserComponent  {
   hobbies: string[];
   showHobbies: boolean;
   posts:Post[];
+  moe: moe{};
+  coordinates: [];
 
   constructor(private postsService: PostsService){
     this.name = 'John Doe'; 
@@ -30,6 +32,16 @@ export class UserComponent  {
     this.postsService.getPosts().subscribe(posts => {
         this.posts = posts;
     });
+
+    this.postsService.getMoe().subscribe(moe => {
+        this.moe = moe;
+    });
+
+    this.postsService.getTaxi().subscribe(taxi => {
+        this.coordinates = taxi.features[0].geometry.coordinates;
+        console.log(taxi.features[0].geometry.coordinates);
+    });
+
   }
 
 
@@ -56,4 +68,15 @@ interface Post{
     id: number;
     title: string;
     body: string;
+}
+interface taxi {
+  features:[];   
+
+}
+
+interface moe {
+    
+    result: {};
+    
+
 }
