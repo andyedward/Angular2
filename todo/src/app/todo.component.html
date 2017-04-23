@@ -1,0 +1,12 @@
+<div>
+	<form action="">
+		<label for="todo">Add Todo</label>
+		<input type="text" id="todo"/>
+		<input type="submit" />
+	</form>
+</div>
+<div>
+	<ul>
+		<li *ngFor="let todo of todos">{{todo.todo}}</li>
+	</ul>
+</div>
