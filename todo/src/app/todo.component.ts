@@ -17,6 +17,16 @@ export class TodoComponent implements OnInit {
 	constructor(private todoService: TodoService) {}
 
 	getTodos():void {
-		this.todos = this.todoService.getTodo();
+		this.todoService.getTodo().then(todos => this.todos = todos);
+	}
+
+	addTodo(todo: string):void {
+		if (todo !== '') {
+			this.todos.push({id:24, todo:todo})
+		}
+	}
+
+	deleteTodo(todo:Todo):void {
+		this.todos = this.todos.filter( h => h !== todo);
 	}
 }
