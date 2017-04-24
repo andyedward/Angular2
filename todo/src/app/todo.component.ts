@@ -4,8 +4,7 @@ import { TodoService } from './todo.service'
 
 @Component({
 	selector: 'todo',
-	templateUrl: './todo.component.html',
-	providers: [TodoService]
+	templateUrl: './todo.component.html'
 })
 
 export class TodoComponent implements OnInit {
