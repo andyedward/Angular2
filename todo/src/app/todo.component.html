@@ -8,10 +8,8 @@
 <div>
 	<ul>
 		<li *ngFor="let todo of todos">
-			<span (click)="getTodoDetail(todo)">{{todo.todo}}</span> 
+			<span (click)="gotoDetail(todo)">{{todo.todo}}</span> 
 			<span style="margin-left:10px" (click)="deleteTodo(todo)">X</span>
 		</li>
 	</ul>
 </div>
-
-<todoDetail></todoDetail>

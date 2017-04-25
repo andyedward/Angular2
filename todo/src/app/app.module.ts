@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule }   from '@angular/router';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -18,12 +19,23 @@ import { TodoService } from './todo.service'
     AppComponent,
     TodoComponent,
     TodoDetailComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    RouterModule.forRoot([
+      {
+        path: 'todo',
+        component: TodoComponent
+      },
+      {
+        path: 'detail/:id',
+        component: TodoDetailComponent
+      }
+    ])
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

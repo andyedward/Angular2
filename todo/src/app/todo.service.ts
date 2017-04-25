@@ -23,11 +23,11 @@ export class TodoService {
 		return Promise.reject(error.message || error);
 	}
 
-	getTodoDetail(id: number):Promise<Todo[]> {
+	getTodoDetail(id: number):Promise<Todo> {
 		const url = `${this.todoUrl}/${id}`;
 		return this.http.get(url)
 				.toPromise()
-				.then(response => response.json().data as Todo[])
+				.then(response => response.json().data as Todo)
 				.catch(this.handleError);
 	}
 

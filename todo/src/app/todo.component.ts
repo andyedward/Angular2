@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from './todo'
-import { TodoService } from './todo.service'
+import { Todo } from './todo';
+import { TodoService } from './todo.service';
+
+import { Router} from '@angular/router';
 
 @Component({
 	selector: 'todo',
@@ -13,7 +15,8 @@ export class TodoComponent implements OnInit {
 	ngOnInit():void {
 		this.getTodos();
 	}
-	constructor(private todoService: TodoService) {}
+	constructor(private router: Router,
+				private todoService: TodoService) {}
 
 	getTodos():void {
 		this.todoService.getTodo().then(todos => this.todos = todos);
@@ -27,5 +30,9 @@ export class TodoComponent implements OnInit {
 
 	deleteTodo(todo:Todo):void {
 		this.todos = this.todos.filter( h => h !== todo);
+	}
+
+	gotoDetail(todo: Todo):void {
+		this.router.navigate(['/detail', todo.id])
 	}
 }
